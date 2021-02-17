@@ -16,6 +16,7 @@ import ListItem from '@material-ui/core/ListItem';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import ListItemText from '@material-ui/core/ListItemText';
 import Homepage from '../HomePage/Homepage';
+import { Button, Navbar, Nav, NavDropdown } from 'react-bootstrap'
 
 
 const drawerWidth = 240;
@@ -26,6 +27,7 @@ const useStyles = makeStyles((theme) => ({
   },
   appBar: {
     zIndex: theme.zIndex.drawer + 1,
+    backgroundImage: 'linear-gradient(rgb(69, 22, 123), rgb(10, 26, 243))',
     transition: theme.transitions.create(['width', 'margin'], {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
@@ -37,6 +39,7 @@ const useStyles = makeStyles((theme) => ({
     transition: theme.transitions.create(['width', 'margin'], {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.enteringScreen,
+      
     }),
   },
   menuButton: {
@@ -61,8 +64,11 @@ const useStyles = makeStyles((theme) => ({
     transition: theme.transitions.create('width', {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
+      
     }),
     overflowX: 'hidden',
+    backgroundImage: 'linear-gradient(rgb(10, 26, 243), rgb(69, 22, 123))',
+    color: 'white',
     width: theme.spacing(7) + 1,
     [theme.breakpoints.up('sm')]: {
       width: theme.spacing(9) + 1,
@@ -73,12 +79,14 @@ const useStyles = makeStyles((theme) => ({
     alignItems: 'center',
     justifyContent: 'flex-end',
     padding: theme.spacing(0, 1),
+    
     // necessary for content to be below app bar
     ...theme.mixins.toolbar,
   },
   content: {
     flexGrow: 1,
-    padding: theme.spacing(3),
+    padding: theme.spacing(3), 
+    backgroundColor: 'rgb(230, 231, 245)'
   },
 }));
 
@@ -86,7 +94,6 @@ export default function MiniDrawer() {
   const classes = useStyles();
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
-
   const handleDrawerOpen = () => {
     setOpen(true);
   };
@@ -116,9 +123,34 @@ export default function MiniDrawer() {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" noWrap>
+          <Typography variant="h4" noWrap>
             ABC Electronics
           </Typography>
+          <div className = "nav_links">
+            <Navbar collapseOnSelect expand="lg" variant="dark">
+                <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+                <Navbar.Collapse id="responsive-navbar-nav"  className ="nav_background">
+                  <Nav className="mr-auto ">
+                    <Nav.Link href="#features" className = 'nav_links'>Features</Nav.Link>
+                    <Nav.Link href="#pricing"  className = 'nav_links'>Pricing</Nav.Link>
+                    <NavDropdown title="Dropdown" id="collasible-nav-dropdown" >
+                      <NavDropdown.Item href="#action/3.1" >Action</NavDropdown.Item>
+                      <NavDropdown.Item href="#action/3.2" >Another action</NavDropdown.Item>
+                      <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
+                      <NavDropdown.Divider />
+                      <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
+                    </NavDropdown>
+                  </Nav>
+                  <Nav>
+                    <Nav.Link href="#deets"  className = 'nav_links'>More deets</Nav.Link>
+                    <Nav.Link eventKey={2} href="#memes"  className = 'nav_links'>
+                      Dank memes
+                    </Nav.Link>
+                  </Nav>
+                </Navbar.Collapse>
+            </Navbar>
+          </div>
+         
         </Toolbar>
       </AppBar>
       <Drawer
