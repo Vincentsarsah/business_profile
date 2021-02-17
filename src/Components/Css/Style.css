@@ -2,11 +2,27 @@
     font-size: 3rem !important;
   }
 
-  .phone_items{
+  .phone_items,
+  .laptop_items
+ {
     border-radius: 6px !important;
-    border-top: 2px solid red;
+    border-top: 2px solid rgb(100, 104, 99);
+    margin-top: 1rem;
   }
 
   .cardtitle{
     color: rgb(36, 25, 9) !important;
   }
+
+  .phone_image,
+  .computer_image{
+    height: 10rem;
+  }
+
+  .phone_image:hover,
+  .computer_image:hover{
+    -webkit-transform: scale(0.8);
+    -ms-transform: scale(0.8);
+    transform: scale(1.1);
+  }
+
